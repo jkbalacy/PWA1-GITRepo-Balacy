@@ -13,7 +13,7 @@ Week 3 Homework: Debug Search v3
 		currentSearch = '';
 
 	// Validates search query
-	var validate = function(query){
+	function validate(query){
 
 		// Trim whitespace from start and end of search query
 		while(query.charAt(0) === ""){
@@ -29,11 +29,14 @@ Week 3 Homework: Debug Search v3
 		}
 		// (DO NOT FIX THE LINE DIRECTLY BELOW)
 		searchInput.focus();
-		search(query);
+
+		this.search(query);
+
 	};
 
+
 	// Finds search matches
-	var search = function(query){
+	function search(query){
 
 		// split the user's search query string into an array
 		var queryArray = query.split(" ");
@@ -42,7 +45,7 @@ Week 3 Homework: Debug Search v3
 		var results = [];
 
 		// loop through each index of db array
-		for(var i=0, j=db.length; i<j; i++){
+		for(var i= 0, j=db.length; i<j; i++){
 
 			// each db[i] is a single video item, each title ends with a pipe "|"
 			// save a lowercase variable of the video title
@@ -66,16 +69,16 @@ Week 3 Homework: Debug Search v3
 		}
 	};
 
-
 	// Put "No Results" message into page (DO NOT FIX THE HTML VAR NOR THE innerHTML)
-	var noMatch = function(){
-		var html = ''+ '<p>No Results found.</p>'+ '<p style="font-size:10px;">Try searching for "JavaScript".  Just an idea.</p>';
+	function noMatch(){
+		var html = ''+
+			'<p>No Results found.</p>'+'<p style="font-size:10px;">Try searching for "JavaScript".  Just an idea.</p>';
 
 		resultsDIV.innerHTML = html;
 	};
 
 	// Put matches into page as paragraphs with anchors
-	var showMatches = function(results){
+	function showMatches(results){
 
 		// THE NEXT 4 LINES ARE CORRECT.
 		var html = '<p>Results</p>',
@@ -99,11 +102,11 @@ Week 3 Homework: Debug Search v3
 			resultsDIV.innerHTML = html; //THIS LINE IS CORRECT.
 		}
 
+
 		// Check that matches were found, and run output functions
 		if(results.length === 0){
 			noMatch();
 		}
-
 		else{
 			showMatches(results);
 		}
@@ -119,5 +122,4 @@ Week 3 Homework: Debug Search v3
 		// THE LINE DIRECTLY BELOW IS CORRECT
 		return false;
 	};
-
 })();
